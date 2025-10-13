@@ -1,0 +1,136 @@
+2025-10-12 14:56:52 - [31mERROR[0m - __main__ - <module>:4695 - Unexpected error: 'auto_open_charts'
+2025-10-12 14:56:52 - [32mINFO[0m - __main__ - <module>:4698 - Application terminated
+2025-10-12 14:57:17 - [32mINFO[0m - __main__ - load_blacklist:1439 - Loaded blacklist with 5 tokens
+2025-10-12 14:57:17 - [32mINFO[0m - __main__ - __init__:981 - Background monitor initialized
+2025-10-12 14:57:19 - [32mINFO[0m - __main__ - load_tokens:1038 - Loaded 42 tokens for monitoring
+2025-10-12 14:57:19 - [32mINFO[0m - __main__ - monitor_loop:1265 - Background monitoring started
+2025-10-12 14:57:19 - [32mINFO[0m - __main__ - start_monitoring:1365 - Started monitoring 42 tokens
+2025-10-12 14:57:19 - [32mINFO[0m - __main__ - start_background_monitoring:2094 - Background monitoring started from GUI
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to BNBHOLDER_USDT ticker
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to BNBHOLDER_USDT deals
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to STREAMER_USDT ticker
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to STREAMER_USDT deals
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to PUP_USDT ticker
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to PUP_USDT deals
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to PALU_USDT ticker
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to PALU_USDT deals
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to AKE_USDT ticker
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to AKE_USDT deals
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to KIND_USDT ticker
+2025-10-12 14:57:20 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to KIND_USDT deals
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to PIPE_USDT ticker
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to PIPE_USDT deals
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to KEFUXIAOHE_USDT ticker
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to KEFUXIAOHE_USDT deals
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to DUSK_USDT ticker
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to DUSK_USDT deals
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to AIN_USDT ticker
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to AIN_USDT deals
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to CYPR_USDT ticker
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to CYPR_USDT deals
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to EXO_USDT ticker
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to EXO_USDT deals
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to GIGGLE_USDT ticker
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to GIGGLE_USDT deals
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to BIANRENSHENG_USDT ticker
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to BIANRENSHENG_USDT deals
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to BSU_USDT ticker
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to BSU_USDT deals
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to BAGWORK_USDT ticker
+2025-10-12 14:57:21 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to BAGWORK_USDT deals
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to STBL_USDT ticker
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to STBL_USDT deals
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to STRIKE_USDT ticker
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to STRIKE_USDT deals
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to CLASH_USDT ticker
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to CLASH_USDT deals
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to STARTUP_USDT ticker
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to STARTUP_USDT deals
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to REAL1_USDT ticker
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to REAL1_USDT deals
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to RAIL_USDT ticker
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to RAIL_USDT deals
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to NUMI_USDT ticker
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to NUMI_USDT deals
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to MAMO_USDT ticker
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to MAMO_USDT deals
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to RICE_USDT ticker
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to RICE_USDT deals
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to ZEREBRO_USDT ticker
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to ZEREBRO_USDT deals
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to LAVA_USDT ticker
+2025-10-12 14:57:22 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to LAVA_USDT deals
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to AIOT_USDT ticker
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to AIOT_USDT deals
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to MEMERUSH_USDT ticker
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to MEMERUSH_USDT deals
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to RDNT_USDT ticker
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to RDNT_USDT deals
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to CDL_USDT ticker
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to CDL_USDT deals
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to MYX_USDT ticker
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to MYX_USDT deals
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to EVAA_USDT ticker
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to EVAA_USDT deals
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to MANYU_USDT ticker
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to MANYU_USDT deals
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to BLOCK_USDT ticker
+2025-10-12 14:57:23 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to BLOCK_USDT deals
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to ZORA_USDT ticker
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to ZORA_USDT deals
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to HANA_USDT ticker
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to HANA_USDT deals
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to HAJIMI_USDT ticker
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to HAJIMI_USDT deals
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to BAKE_USDT ticker
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to BAKE_USDT deals
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to NEET_USDT ticker
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to NEET_USDT deals
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to PROVE_USDT ticker
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to PROVE_USDT deals
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1128 - Subscribed to MAT_USDT ticker
+2025-10-12 14:57:24 - [32mINFO[0m - __main__ - on_open:1139 - Subscribed to MAT_USDT deals
+2025-10-12 14:57:29 - [32mINFO[0m - __main__ - __init__:301 - Hybrid chart initialized
+2025-10-12 14:57:30 - [31mERROR[0m - __main__ - apply_default_settings:3343 - Error applying default settings: 'axis_label_size'
+2025-10-12 14:57:30 - [32mINFO[0m - __main__ - start:867 - Starting hybrid chart for KEFUXIAOHE...
+2025-10-12 14:57:30 - [32mINFO[0m - __main__ - start:876 - Loading 5 historical data points for KEFUXIAOHE
+2025-10-12 14:57:30 - [32mINFO[0m - __main__ - start:901 - Hybrid chart started
+2025-10-12 14:57:31 - [32mINFO[0m - __main__ - on_open:549 - Subscribed to KEFUXIAOHE_USDT ticker
+2025-10-12 14:57:31 - [32mINFO[0m - __main__ - on_open:559 - Subscribed to KEFUXIAOHE_USDT deals
+2025-10-12 14:57:34 - [32mINFO[0m - __main__ - __init__:301 - Hybrid chart initialized
+2025-10-12 14:57:35 - [31mERROR[0m - __main__ - apply_default_settings:3343 - Error applying default settings: 'axis_label_size'
+2025-10-12 14:57:35 - [32mINFO[0m - __main__ - start:867 - Starting hybrid chart for STREAMER...
+2025-10-12 14:57:35 - [32mINFO[0m - __main__ - start:876 - Loading 8 historical data points for STREAMER
+2025-10-12 14:57:35 - [32mINFO[0m - __main__ - start:901 - Hybrid chart started
+2025-10-12 14:57:35 - [32mINFO[0m - __main__ - __init__:301 - Hybrid chart initialized
+2025-10-12 14:57:36 - [32mINFO[0m - __main__ - on_open:549 - Subscribed to STREAMER_USDT ticker
+2025-10-12 14:57:36 - [32mINFO[0m - __main__ - on_open:559 - Subscribed to STREAMER_USDT deals
+2025-10-12 14:57:36 - [31mERROR[0m - __main__ - apply_default_settings:3343 - Error applying default settings: 'axis_label_size'
+2025-10-12 14:57:36 - [32mINFO[0m - __main__ - start:867 - Starting hybrid chart for GIGGLE...
+2025-10-12 14:57:36 - [32mINFO[0m - __main__ - start:876 - Loading 11 historical data points for GIGGLE
+2025-10-12 14:57:36 - [32mINFO[0m - __main__ - start:901 - Hybrid chart started
+2025-10-12 14:57:36 - [32mINFO[0m - __main__ - on_open:549 - Subscribed to GIGGLE_USDT ticker
+2025-10-12 14:57:36 - [32mINFO[0m - __main__ - on_open:559 - Subscribed to GIGGLE_USDT deals
+2025-10-12 14:57:45 - [32mINFO[0m - __main__ - on_closing:4636 - Closing application...
+2025-10-12 14:57:45 - [32mINFO[0m - __main__ - stop_monitoring:1372 - Stopping background monitoring...
+2025-10-12 14:57:47 - [32mINFO[0m - __main__ - monitor_loop:1349 - Background monitoring stopped
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - stop_monitoring:1398 - Background monitoring stopped
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - on_closing:4641 - Background monitoring stopped
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - save_blacklist:1456 - Blacklist saved with 5 tokens
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - on_closing:4648 - Blacklist saved on exit
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - on_closing:4655 - Stopping chart for <__main__.HybridChart object at 0x00000227E343F770>
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - stop:909 - Stopping hybrid chart...
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - stop:927 - Animation stopped
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - stop:947 - Hybrid chart stopped
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - on_closing:4655 - Stopping chart for <__main__.HybridChart object at 0x00000227E93602D0>
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - stop:909 - Stopping hybrid chart...
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - stop:927 - Animation stopped
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - stop:947 - Hybrid chart stopped
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - on_closing:4655 - Stopping chart for <__main__.HybridChart object at 0x00000227EB64C410>
+2025-10-12 14:57:56 - [32mINFO[0m - __main__ - stop:909 - Stopping hybrid chart...
+2025-10-12 14:57:57 - [32mINFO[0m - __main__ - stop:927 - Animation stopped
+2025-10-12 14:57:57 - [32mINFO[0m - __main__ - stop:947 - Hybrid chart stopped
+2025-10-12 14:57:58 - [32mINFO[0m - __main__ - on_closing:4678 - All threads stopped
+2025-10-12 14:57:58 - [32mINFO[0m - __main__ - on_closing:4684 - Force terminating application...
+2025-10-12 14:58:24 - [32mINFO[0m - __main__ - load_blacklist:1439 - Loaded blacklist with 5 tokens
+2025-10-12 14:58:24 - [32mINFO[0m - __main__ - __init__:981 - Background monitor initialized
