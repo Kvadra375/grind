@@ -511,12 +511,22 @@ class HybridChart:
         # Обновляем данные
         current_time = datetime.now()
         
+        # Всегда добавляем время, но цены только если они доступны
+        self.times.append(current_time)
+        
         if self.mexc_price is not None:
-            self.times.append(current_time)
             self.cex_prices.append(self.mexc_price)
+        else:
+            # Если цена недоступна, используем последнюю известную цену или 0
+            last_price = self.cex_prices[-1] if self.cex_prices else 0
+            self.cex_prices.append(last_price)
         
         if self.dex_price is not None:
             self.dex_prices.append(self.dex_price)
+        else:
+            # Если DEX цена недоступна, используем последнюю известную цену или 0
+            last_dex_price = self.dex_prices[-1] if self.dex_prices else 0
+            self.dex_prices.append(last_dex_price)
         
         # Ограничиваем количество точек (15 минут при обновлении каждую секунду = 900 точек)
         max_points = 900  # 15 минут истории
@@ -527,18 +537,28 @@ class HybridChart:
         
         # Обновляем график
         if len(self.times) > 0:
-            times_np = np.array(self.times)
-            cex_prices_np = np.array(self.cex_prices)
+            # Убеждаемся, что все массивы имеют одинаковую длину
+            min_length = min(len(self.times), len(self.cex_prices), len(self.dex_prices))
+            if min_length == 0:
+                return self.line_cex, self.line_dex
+            
+            # Обрезаем массивы до минимальной длины
+            times_trimmed = self.times[-min_length:]
+            cex_prices_trimmed = self.cex_prices[-min_length:]
+            dex_prices_trimmed = self.dex_prices[-min_length:]
+            
+            times_np = np.array(times_trimmed)
+            cex_prices_np = np.array(cex_prices_trimmed)
             
             # Фильтруем данные DEX по времени - используем тот же массив времени
-            if len(self.dex_prices) > 0:
+            if len(dex_prices_trimmed) > 0:
                 # Синхронизируем DEX данные с CEX временем
                 dex_prices_synced = []
-                for i in range(len(self.times)):
-                    if i < len(self.dex_prices):
-                        dex_prices_synced.append(self.dex_prices[i])
+                for i in range(len(times_trimmed)):
+                    if i < len(dex_prices_trimmed):
+                        dex_prices_synced.append(dex_prices_trimmed[i])
                     else:
-                        dex_prices_synced.append(self.dex_prices[-1] if self.dex_prices else 0)
+                        dex_prices_synced.append(dex_prices_trimmed[-1] if dex_prices_trimmed else 0)
                 
                 dex_times_np = times_np
                 dex_prices_np = np.array(dex_prices_synced)
@@ -557,7 +577,8 @@ class HybridChart:
             if self.fill_cex is not None:
                 self.fill_cex.remove()
             
-            if len(cex_prices_np) > 0:
+            # Проверяем, что массивы имеют одинаковую длину перед созданием fill_between
+            if len(times_np) > 0 and len(cex_prices_np) > 0 and len(times_np) == len(cex_prices_np):
                 self.fill_cex = self.ax.fill_between(times_np, cex_prices_np, alpha=0.2, color='#00FF00')
             
             # Обновляем оси только если не используется ручное масштабирование
@@ -701,7 +722,7 @@ class HybridChart:
         
         # Запускаем анимацию с настраиваемой скоростью
         animation_interval = getattr(self, 'animation_interval', 30)
-        self.ani = animation.FuncAnimation(self.fig, self.animate, interval=animation_interval, blit=False)
+        self.ani = animation.FuncAnimation(self.fig, self.animate, interval=animation_interval, blit=False, cache_frame_data=False)
         
         logger.info("Hybrid chart started")
         
