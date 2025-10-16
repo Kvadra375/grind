@@ -2139,7 +2139,18 @@ class ChartGUI:
         # Показываем уведомление
         alert_msg = f"🚨 HIGH SPREAD ALERT! 🚨\n\nToken: {token['name']}\nSpread: {spread:.2f}%\nCEX Price: {cex_price:.6f}\nDEX Price: {dex_price:.6f}\n\nOpen chart?"
         
-        if messagebox.askyesno("🚨 High Spread Alert", alert_msg):
+        # Создаем временное окно для настройки messagebox
+        temp_window = tk.Toplevel(self.root)
+        temp_window.withdraw()  # Скрываем окно
+        temp_window.attributes('-topmost', True)  # Устанавливаем поверх всех окон
+        
+        # Показываем messagebox
+        result = messagebox.askyesno("🚨 High Spread Alert", alert_msg, parent=temp_window)
+        
+        # Закрываем временное окно
+        temp_window.destroy()
+        
+        if result:
             # Копируем тикер в буфер обмена
             ticker = f"{token['name']}USDT"
             try:
