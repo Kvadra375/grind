@@ -113,19 +113,19 @@ class HybridChart:
                                        color='white', fontsize=14, fontweight='bold',
                                        bbox=dict(boxstyle="round,pad=0.5", facecolor='black', alpha=0.8, edgecolor='white'))
         
-        # Переменная для заливки
+        # Переменная для заливки (отключена)
         self.fill_cex = None
 
         # Метки цен на правой оси для CEX и DEX
         self.cex_price_label = self.ax.text(
             1.01, 0, '', transform=self.ax.get_yaxis_transform(), va='center', ha='left',
-            color='white', fontsize=10, clip_on=False, zorder=10,
-            bbox=dict(boxstyle='round,pad=0.2', facecolor='#154c1d', alpha=0.95, edgecolor='none')
+            color='white', fontsize=12, fontweight='bold', clip_on=False, zorder=15,
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='#154c1d', alpha=0.9, edgecolor='white', linewidth=1)
         )
         self.dex_price_label = self.ax.text(
             1.01, 0, '', transform=self.ax.get_yaxis_transform(), va='center', ha='left',
-            color='white', fontsize=10, clip_on=False, zorder=10,
-            bbox=dict(boxstyle='round,pad=0.2', facecolor='#6b1f1f', alpha=0.95, edgecolor='none')
+            color='white', fontsize=12, fontweight='bold', clip_on=False, zorder=15,
+            bbox=dict(boxstyle='round,pad=0.3', facecolor='#6b1f1f', alpha=0.9, edgecolor='white', linewidth=1)
         )
 
         # Горизонтальные направляющие линии под метки
@@ -141,13 +141,13 @@ class HybridChart:
         default_pad = 0.11 * 0.5  # pad_size = width * 0.5
         default_font = 0.11 * 60  # font_size = width * 60
         self.cex_badge = self.ax.annotate('', xy=(0, 0), xytext=(8, 0), textcoords='offset points',
-                                          ha='left', va='center', color='white', zorder=11, clip_on=False,
+                                          ha='left', va='center', color='white', fontweight='bold', zorder=16, clip_on=False,
                                           fontsize=default_font,
-                                          bbox=dict(boxstyle=f'round,pad={default_pad}', fc='#1e7f2e', ec='none', alpha=0.98))
+                                          bbox=dict(boxstyle=f'round,pad={default_pad}', fc='#1e7f2e', ec='white', linewidth=1, alpha=0.95))
         self.dex_badge = self.ax.annotate('', xy=(0, 0), xytext=(8, 0), textcoords='offset points',
-                                          ha='left', va='center', color='white', zorder=11, clip_on=False,
+                                          ha='left', va='center', color='white', fontweight='bold', zorder=16, clip_on=False,
                                           fontsize=default_font,
-                                          bbox=dict(boxstyle=f'round,pad={default_pad}', fc='#9e2e2e', ec='none', alpha=0.98))
+                                          bbox=dict(boxstyle=f'round,pad={default_pad}', fc='#9e2e2e', ec='white', linewidth=1, alpha=0.95))
         
         logger.info("Hybrid chart initialized")
     
@@ -504,7 +504,7 @@ class HybridChart:
         threading.Thread(target=poll_dex_price, daemon=True).start()
     
     def animate(self, frame):
-        """Анимация графика"""
+        """Анимация графика - оптимизированная версия"""
         if not self.running:
             return self.line_cex, self.line_dex
         
@@ -528,8 +528,8 @@ class HybridChart:
             last_dex_price = self.dex_prices[-1] if self.dex_prices else 0
             self.dex_prices.append(last_dex_price)
         
-        # Ограничиваем количество точек (15 минут при обновлении каждую секунду = 900 точек)
-        max_points = 900  # 15 минут истории
+        # Ограничиваем количество точек (10 минут для более быстрой работы)
+        max_points = 600  # 10 минут истории
         if len(self.times) > max_points:
             self.times = self.times[-max_points:]
             self.cex_prices = self.cex_prices[-max_points:]
@@ -566,23 +566,17 @@ class HybridChart:
                 dex_times_np = np.array([])
                 dex_prices_np = np.array([])
             
-            # Обновляем линии
+            # Обновляем линии (оптимизированно)
             self.line_cex.set_data(times_np, cex_prices_np)
             if len(dex_times_np) > 0:
                 self.line_dex.set_data(dex_times_np, dex_prices_np)
             else:
                 self.line_dex.set_data([], [])
             
-            # Удаляем старую заливку и создаем новую
-            if self.fill_cex is not None:
-                self.fill_cex.remove()
+            # Заливка отключена для лучшей производительности
             
-            # Проверяем, что массивы имеют одинаковую длину перед созданием fill_between
-            if len(times_np) > 0 and len(cex_prices_np) > 0 and len(times_np) == len(cex_prices_np):
-                self.fill_cex = self.ax.fill_between(times_np, cex_prices_np, alpha=0.2, color='#00FF00')
-            
-            # Обновляем оси только если не используется ручное масштабирование
-            if not self.manual_zoom:
+            # Обновляем оси только если не используется ручное масштабирование (реже для производительности)
+            if not self.manual_zoom and frame % 3 == 0:  # Обновляем оси каждый 3-й кадр
                 # Обновляем ось X с учетом отступов
                 if len(times_np) > 1:
                     x_margin = getattr(self, 'x_margin', 0.0)
@@ -630,7 +624,7 @@ class HybridChart:
                     self.ax.set_ylim(self.manual_ylim)
             
             # Обновляем правые метки цен (CEХ/DEX) на текущих значениях
-            if len(cex_prices_np) > 0:
+            if len(cex_prices_np) > 0:  # Обновляем метки на каждом кадре для видимости
                 current_cex_val = float(cex_prices_np[-1])
                 self.cex_price_label.set_text(f"CEX {current_cex_val:.6f}")
                 # Нормализуем позицию по Y в координатах оси
@@ -642,7 +636,7 @@ class HybridChart:
                 self.cex_price_label.set_position((1.01, cex_rel))
                 # Обновляем направляющие
                 self.cex_guide.set_ydata([current_cex_val, current_cex_val])
-                # Бейдж CEX
+                # Бейдж CEX - всегда обновляем
                 self.cex_badge.xy = (self.ax.get_xlim()[1], current_cex_val)
                 self.cex_badge.set_text(f"{current_cex_val:.6f}")
                 
@@ -655,16 +649,18 @@ class HybridChart:
                         dex_rel = 0.5
                     self.dex_price_label.set_position((1.01, dex_rel))
                     self.dex_guide.set_ydata([current_dex_val, current_dex_val])
-                    # Бейдж DEX
+                    # Бейдж DEX - всегда обновляем
                     self.dex_badge.xy = (self.ax.get_xlim()[1], current_dex_val)
                     self.dex_badge.set_text(f"{current_dex_val:.6f}")
                 else:
                     self.dex_price_label.set_text('')
                     self.dex_guide.set_ydata([np.nan, np.nan])
                     self.dex_badge.set_text('')
+                
+                # Удалено обновление меток оси Y - оно создавало дублирующие ценники
             
-            # Обновляем спред
-            if len(cex_prices_np) > 0 and len(dex_prices_np) > 0:
+            # Обновляем спред (реже для производительности)
+            if len(cex_prices_np) > 0 and len(dex_prices_np) > 0 and frame % 2 == 0:  # Обновляем спред каждый 2-й кадр
                 current_cex = cex_prices_np[-1]
                 current_dex = dex_prices_np[-1]
                 if current_cex > 0 and current_dex > 0:
@@ -682,10 +678,11 @@ class HybridChart:
                     
                     self.spread_text.set_text(f'Current Spread: {spread:+.2f}%')
                     self.spread_text.set_color(spread_color)
-            else:
+            elif frame % 10 == 0:  # Обновляем сообщение ожидания реже
                 self.spread_text.set_text('Waiting for data...')
                 self.spread_text.set_color('white')
         
+        # Возвращаем объекты для анимации (без blit)
         return self.line_cex, self.line_dex
     
     def start(self, token_address, token_symbol, background_monitor=None):
@@ -721,7 +718,7 @@ class HybridChart:
         self.connect_dex(token_address, chain_hint=chain_hint)
         
         # Запускаем анимацию с настраиваемой скоростью
-        animation_interval = getattr(self, 'animation_interval', 30)
+        animation_interval = getattr(self, 'animation_interval', 100)  # Увеличиваем интервал для более быстрой анимации
         self.ani = animation.FuncAnimation(self.fig, self.animate, interval=animation_interval, blit=False, cache_frame_data=False)
         
         logger.info("Hybrid chart started")
@@ -2550,7 +2547,7 @@ class ChartGUI:
             'fill_opacity': 0.2,
             'font_size': 8.0,
             'grid_alpha': 0.2,
-            'animation_speed': 30.0,
+            'animation_speed': 100.0,
             'y_margin': 0.5,
             'spread_brightness': 1.0,
             'x_margin': 0.0,
@@ -3093,14 +3090,14 @@ class ChartGUI:
                                     default_values['y_margin'], chart, self.update_y_margin)
         self.create_slider_with_value(row3, "X Margin:", 'x_margin', 0.0, 0.5, 
                                     default_values['x_margin'], chart, self.update_x_margin)
-        self.create_slider_with_value(row3, "Animation Speed:", 'animation_speed', 10.0, 200.0, 
+        self.create_slider_with_value(row3, "Animation Speed:", 'animation_speed', 50.0, 1000.0, 
                                     default_values['animation_speed'], chart, self.update_animation_speed)
         
         # Дополнительные настройки
         row4 = ttk.Frame(scrollable_frame)
         row4.pack(fill=tk.X, pady=5)
-        self.create_slider_with_value(row4, "Fill Opacity:", 'fill_opacity', 0.0, 0.8, 
-                                    default_values['fill_opacity'], chart, self.update_fill_opacity)
+        # self.create_slider_with_value(row4, "Fill Opacity:", 'fill_opacity', 0.0, 0.8, 
+        #                             default_values['fill_opacity'], chart, self.update_fill_opacity)  # Отключено
         self.create_slider_with_value(row4, "Background Alpha:", 'background_alpha', 0.0, 0.5, 
                                     default_values['background_alpha'], chart, self.update_background_alpha)
         self.create_slider_with_value(row4, "Border Width:", 'border_width', 0.5, 3.0, 
@@ -3524,11 +3521,9 @@ class ChartGUI:
         pass
     
     def update_fill_opacity(self, chart):
-        """Обновление прозрачности заливки"""
-        opacity = chart.slider_vars['fill_opacity'].get()
-        if hasattr(chart, 'fill_cex') and chart.fill_cex is not None:
-            chart.fill_cex.set_alpha(opacity)
-        chart.fig.canvas.draw()
+        """Обновление прозрачности заливки (отключено)"""
+        # Заливка отключена для лучшей производительности
+        pass
     
     def update_font_size(self, chart):
         """Обновление размера шрифта"""
@@ -3659,11 +3654,9 @@ class ChartGUI:
         chart.fig.canvas.draw()
     
     def update_volume_alpha(self, chart):
-        """Обновление прозрачности объема"""
-        alpha = chart.slider_vars['volume_alpha'].get()
-        if hasattr(chart, 'fill_cex') and chart.fill_cex is not None:
-            chart.fill_cex.set_alpha(alpha)
-        chart.fig.canvas.draw()
+        """Обновление прозрачности объема (отключено)"""
+        # Заливка отключена для лучшей производительности
+        pass
     
     def update_cex_color(self, chart):
         """Обновление цвета CEX линии"""
@@ -3735,14 +3728,9 @@ class ChartGUI:
         pass
     
     def update_fill_color(self, chart):
-        """Обновление цвета заливки"""
-        r = chart.slider_vars['fill_color_red'].get()
-        g = chart.slider_vars['fill_color_green'].get()
-        b = chart.slider_vars['fill_color_blue'].get()
-        color = (r, g, b)
-        if hasattr(chart, 'fill_cex') and chart.fill_cex is not None:
-            chart.fill_cex.set_color(color)
-        chart.fig.canvas.draw()
+        """Обновление цвета заливки (отключено)"""
+        # Заливка отключена для лучшей производительности
+        pass
     
     def update_title_color(self, chart):
         """Обновление цвета заголовка"""
@@ -4214,7 +4202,7 @@ class ChartGUI:
             'x_margin': 0.0,
             'axis_label_size': 12.0,
             'tick_size': 10.0,
-            'animation_speed': 30.0,
+            'animation_speed': 100.0,
             'spread_brightness': 1.0,
             'line_style_alpha': 0.8,
             'background_alpha': 0.1,
